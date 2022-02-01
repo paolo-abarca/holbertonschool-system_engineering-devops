@@ -1,0 +1,1 @@
+This is a script project with variables
