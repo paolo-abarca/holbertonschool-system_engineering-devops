@@ -2,12 +2,13 @@
 # Bash script showing the best school 10 times
 counter=1
 
-while [ $counter -lt 10 ]
+while [ $counter -lt 11 ]
 do
 	if [ $counter -eq 9 ]
 	then
 		echo "Hi"
+	else
+		echo "Best School"
 	fi
-        echo "Best School"
         ((counter++))
 done
