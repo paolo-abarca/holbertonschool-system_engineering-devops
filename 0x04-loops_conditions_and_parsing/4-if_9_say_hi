@@ -1,6 +1,6 @@
 #!/usr/bin/env bash
 # Bash script showing the best school 10 times
-counter=1
+counter=0
 
 while [ $counter -lt 11 ]
 do
