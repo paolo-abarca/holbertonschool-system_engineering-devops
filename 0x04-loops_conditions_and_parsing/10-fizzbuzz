@@ -1,0 +1,23 @@
+#!/usr/bin/env bash
+# Write a Bash script that displays numbers from 1 to 100 fizz buzz
+number=1
+while [[ $number -le 100 ]]
+do
+	if [ $((number % 3)) == 0 ] && [ $((number % 5)) != 0 ]
+	then
+		echo "Fizz"
+
+	elif [ $((number % 5)) == 0 ] && [ $((number % 3)) != 0 ]
+	then
+		echo "Buzz"
+
+	elif [ $((number % 3)) == 0 ] && [ $((number % 5)) == 0 ]
+	then
+		echo "FizzBuzz"
+
+	else
+		echo $number
+
+	fi
+	((number++))
+done
