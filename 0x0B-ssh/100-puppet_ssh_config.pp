@@ -1,11 +1,16 @@
-#adding puppet file which makes changes to our config file
+#adding puppet file which makes changes to our config file.
+include stdlib
 
-file { '/etc/ssh/ssh_config':
+file_line {'change password':
+  ensure => 'present',
   path => '/etc/ssh/ssh_config',
-  line => '#   IdentityFile ~/.ssh/school'
+  line => '#   PasswordAuthentication no',
+  match => '#   PasswordAuthentication yes',
 }
 
-file { '/etc/ssh/ssh_config':
+file_line {'change private key':
+  ensure => 'present',
   path => '/etc/ssh/ssh_config',
-  line => '#   PasswordAuthentication no'
+  line => '#   IdentityFile ~/.ssh/school',
+  match => '#   IdentityFile ~/.ssh/id_rsa',
 }
