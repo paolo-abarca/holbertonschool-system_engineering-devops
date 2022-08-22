@@ -11,8 +11,9 @@ exec { 'install nginx':
 }
 
 exec { 'header HTTP':
-  command  => 'sed -i "s/a 404./a 404.\n\t\tadd_header X-Served-By $HOSTNAME;/" /etc/nginx/sites-available/default',
-  provider => shell,
+  environment => [ "HOSTNAME=${hostname}" ],
+  command     => 'sed -i "s/a 404./a 404.\n\t\tadd_header X-Served-By \"$HOSTNAME\";/" /etc/nginx/sites-available/default',
+  provider    => shell,
 }
 
 exec { 'restart nginx':
