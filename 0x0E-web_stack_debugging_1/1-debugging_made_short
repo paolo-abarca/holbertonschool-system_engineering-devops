@@ -1,4 +1,5 @@
 #!/usr/bin/env bash
 # Adding script from task #0, but shorter and nicer
 sed -i '/8080 default_server/s/8080/80/' /etc/nginx/sites-enabled/default
-pkill -l nginx
+service nginx restart
+pkill -SIGKILL nginx
