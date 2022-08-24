@@ -1,0 +1,5 @@
+#!/usr/bin/env bash
+# Adding script from task #0, but shorter and nicer
+sudo sed -i '/8080 default_server/s/8080/80/' /etc/nginx/sites-enabled/default
+sudo service nginx restart
+sudo service nginx stop
