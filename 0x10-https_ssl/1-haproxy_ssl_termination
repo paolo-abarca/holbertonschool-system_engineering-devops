@@ -39,14 +39,12 @@ backend web-backend
         server 4466-web-01 54.147.136.182:80 check
         server 4466-web-02 54.163.40.93:80 check
 
-frontend www-http
+frontend http
         bind *:80
         reqadd X-Forwarded-Proto:\ http
         default_backend web-backend
 
-frontend www-https
-	bind *:443 ssl crt /etc/haproxy/certs/example.com.pem
-	reqadd X-Forwarded-Proto:\ https
-	acl letsencrypt-acl path_beg /.well-known/acme-challenge/
-	use_backend letsencrypt-backend if letsencrypt-acl
-	default_backend www-backend
+frontend https
+        bind *:443 ssl crt /etc/haproxy/ssl/www.brentmuha.tech.pem
+        reqadd X-Forwarded-Proto:\ https
+        default_backend web-backend
