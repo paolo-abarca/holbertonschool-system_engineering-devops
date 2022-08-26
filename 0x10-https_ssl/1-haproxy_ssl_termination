@@ -33,12 +33,13 @@ defaults
         errorfile 503 /etc/haproxy/errors/503.http
         errorfile 504 /etc/haproxy/errors/504.http
 
-frontend web-frontend
-        bind *:80
-        mode http
-        default_backend web-backend
-
 backend web-backend
         balance roundrobin
+	redirect scheme https if !{ ssl_fc }
         server 4466-web-01 54.147.136.182:80 check
         server 4466-web-02 54.163.40.93:80 check
+
+frontend http
+        bind *:80
+        reqadd X-Forwarded-Proto:\ http
+        default_backend web-backend
